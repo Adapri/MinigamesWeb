@@ -16,7 +16,7 @@ TO DO:
 
 ✅ Permitir al usuario colocar una ficha en su turno en una casilla vacía
 
-- Mostrar el turno actual
+✅ Mostrar el turno actual
 
 - Finalizar la partida cuando haya un ganador o empate y notificarlo
 

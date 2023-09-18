@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import { Square } from './componets/Square'
-
-enum TURNS {
-  X = 'x',
-  O = 'o',
-}
+import { TURNS } from './logic/constants'
+import { Players } from './componets/Players'
 
 function App () {
   const [board, setBoard] = useState<string[]>(Array(9).fill(null))
@@ -22,6 +19,10 @@ function App () {
   return (
     <main className='tic-tac-toe'>
       <h1>Tic Tac Toe</h1>
+
+      <header className='players'>
+        <Players turn={turn}/>
+      </header>
       <section className='board'>
           {
             board.map((_, index: number) => {

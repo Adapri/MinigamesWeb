@@ -21,3 +21,23 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.players{
+  display: flex;
+  place-content: center;
+  text-align: center;
+  gap: 50px;
+  margin-bottom: 20px;
+}
+
+.player-info{
+  display: flex;
+  gap: 21px;
+  font-size: 20px;
+}
+
+.current-turn{
+  border: 2px solid #fff;
+  background-color: black;
+}
+

@@ -10,7 +10,7 @@ export function Square ({ children, index, updateBoard }: SquareProps) {
   }
 
   return (
-        <div onClick={handleClick} className="square">
+        <div onClick={handleClick} className={'square'}>
             {children}
         </div>
   )
