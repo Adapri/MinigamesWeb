@@ -1,0 +1,23 @@
+#root{
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+}
+
+.board{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px
+}
+
+.square{
+  border: 2px solid #fff;
+  width: 100px;
+  height: 100px;
+  place-items: center;
+  display: grid;
+  font-size: 48px;
+  border-radius: 10px;
+  cursor: pointer;
+}
