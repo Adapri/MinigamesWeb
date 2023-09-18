@@ -1,31 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import { Square } from './componets/Square'
-import { TURNS, WIN_COMBOS } from './logic/constants'
+import { TURNS } from './logic/constants'
 import { Players } from './componets/Players'
+import { WinnerModal } from './componets/WinnerModal'
+import { Board } from './componets/Board'
+import { checkEndBoard, checkWinnerFromBoard } from './logic/board'
 
 function App () {
   const [board, setBoard] = useState<string[]>(Array(9).fill(null))
   const [turn, setTurn] = useState<string>(TURNS.X)
   const [winner, setWinner] = useState<string | null>(null)
-
-  const checkEndBoard = (boardToCheck: string[]) => {
-    return boardToCheck.every((square: string | null) => square !== null)
-  }
-
-  const checkWinnerFromBoard = (boardToCheck: string[]) => {
-    for (const combos of WIN_COMBOS) {
-      const [a, b, c] = combos
-
-      if (boardToCheck[a] !== '' &&
-        boardToCheck[a] === boardToCheck[b] &&
-        boardToCheck[a] === boardToCheck[c]) {
-        return boardToCheck[a]
-      }
-    }
-
-    return null
-  }
 
   const updateBoard = (index: number) => {
     if (board[index] !== null || winner !== null) return
@@ -46,30 +30,26 @@ function App () {
 
     console.log(newWinner)
   }
+
+  const restartGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.X)
+    setWinner(null)
+  }
   return (
     <main className='tic-tac-toe'>
-      <h1>Tic Tac Toe</h1>
-
-      <header className='players'>
+      <header>
         <Players turn={turn}/>
       </header>
-      <section className='board'>
-          {
-            board.map((_, index: number) => {
-              return (
-                <Square
-                      key={index}
-                      updateBoard={updateBoard}
-                      index={index}
-                >
-                  {board[index]}
-                </Square>
-
-              )
-            }
-            )
-          }
+      <section className='winner'>
+        <WinnerModal winner={winner}/>
       </section>
+      <section className='board'>
+        <Board board={board} updateBoard={updateBoard}/>
+      </section>
+      <footer className='options'>
+          {winner !== null && <button onClick={restartGame}>Revancha</button>}
+      </footer>
     </main>
 
   )

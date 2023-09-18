@@ -1,15 +1,39 @@
-#root{
-  max-width: 1280px;
+#root {
+  width: 100%;
   margin: 0 auto;
   text-align: center;
-  padding: 2rem;
+  place-content: center;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
 }
+
+.tic-tac-toe{
+  padding: 20px;
+}
+
+.winner{
+  min-height: 100px;
+  font-size: 30px;
+}
+
 
 .board{
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 10px
 }
+
+.option{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.rematch button{
+  background-color: rgb(86, 167, 178);
+}
+
 
 .square{
   border: 2px solid #fff;
@@ -24,7 +48,8 @@
 
 .players{
   display: flex;
-  place-content: center;
+  justify-content: center;
+  align-items: flex-start;
   text-align: center;
   gap: 50px;
   margin-bottom: 20px;

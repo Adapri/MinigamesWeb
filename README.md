@@ -18,9 +18,11 @@ TO DO:
 
 ✅ Mostrar el turno actual
 
-- Finalizar la partida cuando haya un ganador o empate y notificarlo
+✅ Finalizar la partida cuando haya un ganador o empate y notificarlo
 
-- Permitir revancha
+✅ Permitir revancha
+
+    - Permitir revancha entre dos jugadores   
 
 - Permitir rendirse
 
