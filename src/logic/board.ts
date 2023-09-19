@@ -1,7 +1,7 @@
 import { WIN_COMBOS } from './constants'
 
 export const checkEndBoard = (boardToCheck: string[]) => {
-  return boardToCheck.every((square: string | null) => square !== null)
+  return boardToCheck.every((square: string) => square !== null)
 }
 
 export const checkWinnerFromBoard = (boardToCheck: string[]) => {

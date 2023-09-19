@@ -1,15 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { TURNS } from '../logic/constants'
 import { Players } from '../componets/Players'
 import { WinnerModal } from '../componets/WinnerModal'
 import { Board } from '../componets/Board'
 import { checkEndBoard, checkWinnerFromBoard } from '../logic/board'
 import { Options } from '../componets/Options'
+import { TicTacToe_IA } from '../IA/TicTacToe'
 
 export function TicTaToe () {
   const [board, setBoard] = useState<string[]>(Array(9).fill(null))
   const [turn, setTurn] = useState<string>(TURNS.X)
   const [winner, setWinner] = useState<string | null>(null)
+  const [IA1] = useState<TicTacToe_IA>(new TicTacToe_IA(board))
+  const [IA2] = useState<TicTacToe_IA>(new TicTacToe_IA(board))
 
   const updateBoard = (index: number) => {
     if (board[index] !== null || winner !== null) return
@@ -27,8 +30,6 @@ export function TicTaToe () {
     } else if (checkEndBoard(newBoard)) {
       setWinner('-')
     }
-
-    console.log(newWinner)
   }
 
   const restartGame = () => {
@@ -36,6 +37,20 @@ export function TicTaToe () {
     setTurn(TURNS.X)
     setWinner(null)
   }
+
+  useEffect(() => {
+    console.log('effect')
+    if (winner !== null) {
+      IA1.finishGame(winner)
+      IA2.finishGame(winner)
+    } else if (turn === TURNS.O) {
+      const movement = IA2.chooseMovement([...board])
+      updateBoard(movement)
+    } else {
+      const movement = IA1.chooseMovement([...board])
+      updateBoard(movement)
+    }
+  }, [turn, winner])
 
   return (
     <main className='tic-tac-toe'>
