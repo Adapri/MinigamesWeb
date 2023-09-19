@@ -11,8 +11,7 @@ export function TicTaToe () {
   const [board, setBoard] = useState<string[]>(Array(9).fill(null))
   const [turn, setTurn] = useState<string>(TURNS.X)
   const [winner, setWinner] = useState<string | null>(null)
-  const [IA1] = useState<TicTacToe_IA>(new TicTacToe_IA(board))
-  const [IA2] = useState<TicTacToe_IA>(new TicTacToe_IA(board))
+  const [IA] = useState<TicTacToe_IA>(new TicTacToe_IA(board))
 
   const updateBoard = (index: number) => {
     if (board[index] !== null || winner !== null) return
@@ -39,15 +38,10 @@ export function TicTaToe () {
   }
 
   useEffect(() => {
-    console.log('effect')
     if (winner !== null) {
-      IA1.finishGame(winner)
-      IA2.finishGame(winner)
+      IA.finishGame(winner)
     } else if (turn === TURNS.O) {
-      const movement = IA2.chooseMovement([...board])
-      updateBoard(movement)
-    } else {
-      const movement = IA1.chooseMovement([...board])
+      const movement = IA.chooseMovement([...board])
       updateBoard(movement)
     }
   }, [turn, winner])
