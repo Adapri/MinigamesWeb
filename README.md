@@ -30,4 +30,8 @@ TO DO:
 
 - Mostrar información de los jugadores durante la partida
 
+- Mostrar numero de partidas ganadas de cada jugador
+
 - Añadir temporizador de turnos y partida
+
+- Permitir configurar la partida

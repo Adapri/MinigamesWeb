@@ -24,13 +24,13 @@
   gap: 10px
 }
 
-.option{
+.options{
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
 
-.rematch button{
+.options button{
   background-color: rgb(86, 167, 178);
 }
 
