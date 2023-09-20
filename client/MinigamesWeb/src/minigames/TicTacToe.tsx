@@ -1,17 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { TURNS } from '../logic/constants'
 import { Players } from '../componets/Players'
 import { WinnerModal } from '../componets/WinnerModal'
 import { Board } from '../componets/Board'
 import { checkEndBoard, checkWinnerFromBoard } from '../logic/board'
 import { Options } from '../componets/Options'
-import { TicTacToe_IA } from '../IA/TicTacToe'
 
 export function TicTaToe () {
   const [board, setBoard] = useState<string[]>(Array(9).fill(null))
   const [turn, setTurn] = useState<string>(TURNS.X)
   const [winner, setWinner] = useState<string | null>(null)
-  const [IA] = useState<TicTacToe_IA>(new TicTacToe_IA(board))
 
   const updateBoard = (index: number) => {
     if (board[index] !== null || winner !== null) return
@@ -37,14 +35,6 @@ export function TicTaToe () {
     setWinner(null)
   }
 
-  useEffect(() => {
-    if (winner !== null) {
-      IA.finishGame(winner)
-    } else if (turn === TURNS.O) {
-      const movement = IA.chooseMovement([...board])
-      updateBoard(movement)
-    }
-  }, [turn, winner])
 
   return (
     <main className='tic-tac-toe'>

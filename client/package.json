@@ -1,0 +1,25 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "Front-end página web de minijuegos",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adapri/MinigamesWeb.git"
+  },
+  "keywords": [
+    "minigames",
+    "react",
+    "node.js",
+    "IA"
+  ],
+  "author": "Alberto Adamuz Priego - Adapri29",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adapri/MinigamesWeb/issues"
+  },
+  "homepage": "https://github.com/Adapri/MinigamesWeb#readme"
+}
